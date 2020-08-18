@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This is a simple react project created to build a CI/CD pipeline using Docker, Travis CI and AWS.
 
-In the project directory, you can run:
+## Requirements
 
-### `npm start`
+- Github account
+- TravisCI account linked to your Github account
+- AWS account
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Configuration
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    1. In your AWS account, navigate to Elastic Beanstalk and create a new web environment using Docker as a platform.
+    
+    2. While Beanstalk is being created, navigate to the IAM service and create a new user with programatic access and attach an ElasticBeanstalkFullAccess policy to it. DO NOT FORGET to downlaod your access key and secret values at the end.
 
-### `npm test`
+    3. Clone this project into your own Github repo.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    4. Navigate to Travis CI, find the Github repo you just created and go to settings. There, find the topic "Environment Variables" and add "AWS_ACCESS_KEY" and "AWS_SECRET_KEY" with the values from de .CSV you download from AWS before.
 
-### `npm run build`
+    5. In the actual project, locate the file .travis.yml and under the deploy tag update region, app, env, bucket_name and bucket_path according to the values from your own Beanstalk environment. In the end, commit and push your changes.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+    6. Finally, on Travis, locate your repo again and toggle the switch to start watching your Github repo. After a few minutes, Travis should build and deploy your application to Beanstalk.
