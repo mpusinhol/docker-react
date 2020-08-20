@@ -8,7 +8,11 @@ This is a simple react project created to build a CI/CD pipeline using Docker, T
 - TravisCI account linked to your Github account
 - AWS account
 
-## Configuration
+## Running Locally
+    
+    docker-compose up --build
+    
+## Setup for CD on AWS
 
     1. In your AWS account, navigate to Elastic Beanstalk and create a new web environment using Docker as a platform.
     
