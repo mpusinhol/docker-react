@@ -4,9 +4,13 @@ This is a simple react project created to build a CI/CD pipeline using Docker, T
 
 ## Requirements
 
-- Github account
-- TravisCI account linked to your Github account
-- AWS account
+   ### Reunning Locally
+   - Docker & Docker-Compose installed
+
+   ### Setup for CD on AWS
+   - Github account
+   - TravisCI account linked to your Github account
+   - AWS account
 
 ## Running Locally
     
